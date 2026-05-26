@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Ecommerce UI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: white;
+            transition: 0.4s;
+        }
+
+        body.light {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            padding: 20px 5%;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, .95);
+            backdrop-filter: blur(10px);
+        }
+
+        body.light nav {
+            background: white;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            background: #1f2937;
+            padding: 10px;
+            border-radius: 30px;
+            width: 300px;
+        }
+
+        body.light .search {
+            background: #ddd;
+        }
+
+        .search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            width: 100%;
+            padding-left: 10px;
+        }
+
+        body.light .search input {
+            color: black;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            opacity: .8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .hero button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #00d9ff;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .hero img {
+            width: 450px;
+        }
+
+        /* Categories */
+
+        .categories {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .cat-card {
+            min-width: 180px;
+            height: 120px;
+            background: #1f2937;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: .4s;
+            cursor: pointer;
+        }
+
+        body.light .cat-card {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+        }
+
+        .cat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Product rows */
+
+        .section-title {
+            margin: 30px 0 20px;
+            font-size: 28px;
+        }
+
+        .product-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .card {
+            min-width: 250px;
+            background: #1f2937;
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            transition: .4s;
+            overflow: hidden;
+        }
+
+        body.light .card {
+            background: white;
+            color: black;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .price {
+            color: #00d9ff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-icons {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-icons i {
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 40px;
+            text-align: center;
+            background: #111827;
+        }
+
+        body.light .footer {
+            background: #ddd;
+        }
+
+        /* Responsive */
+
+        @media(max-width:768px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .search {
+                width: 180px;
+            }
+
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                height: auto;
+                padding: 50px 20px;
+            }
+
+            .hero img {
+                width: 100%;
+                max-width: 350px;
+                margin-top: 30px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .menu {
+                display: block;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00d9ff;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">ShopX</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Deals</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search products...">
+        </div>
+
+        <div class="icons">
+            <i class="fa fa-heart"></i>
+            <i class="fa fa-cart-shopping"></i>
+            <i class="fa-solid fa-moon" id="toggle"></i>
+            <i class="fa fa-bars menu"></i>
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>Premium Shopping Experience</h1>
+            <p>
+                Discover the newest fashion, gadgets, and lifestyle products
+                with elegant shopping experience.
+            </p>
+
+            <button>Shop Now</button>
+
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000" />
+
+    </section>
+
+    <div class="container">
+
+        <!-- CATEGORY CAROUSEL -->
+
+        <h2 class="section-title">Categories</h2>
+
+        <div class="categories">
+
+            <div class="cat-card">Fashion</div>
+            <div class="cat-card">Electronics</div>
+            <div class="cat-card">Gaming</div>
+            <div class="cat-card">Shoes</div>
+            <div class="cat-card">Furniture</div>
+            <div class="cat-card">Accessories</div>
+
+        </div>
+
+        <!-- Trending -->
+
+        <h2 class="section-title">Trending</h2>
+
+        <div class="product-row">
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1000">
+                <h3>Nike Sneakers</h3>
+                <p class="price">$89</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000">
+                <h3>Headphones</h3>
+                <p class="price">$120</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1000">
+                <h3>Camera</h3>
+                <p class="price">$349</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=1000">
+                <h3>Smart Watch</h3>
+                <p class="price">$199</p>
+            </div>
+
+        </div>
+
+        <!-- New Arrivals -->
+
+        <h2 class="section-title">New Arrivals</h2>
+
+        <div class="product-row">
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1000">
+                <h3>Jacket</h3>
+                <p class="price">$79</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=1000">
+                <h3>Shoes</h3>
+                <p class="price">$99</p>
+            </div>
+
+        </div>
+
+        <!-- Recommended -->
+
+        <h2 class="section-title">Recommended</h2>
+
+        <div class="product-row">
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000">
+                <h3>iPhone</h3>
+                <p class="price">$999</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icons">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-cart-plus"></i>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1000">
+                <h3>Gaming Setup</h3>
+                <p class="price">$799</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <h3>ShopX</h3>
+        <p>© 2026 All Rights Reserved</p>
+    </footer>
+
+    <script>
+
+        const toggle = document.getElementById("toggle");
+
+        toggle.onclick = () => {
+
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                toggle.className = "fa-solid fa-sun";
+            }
+            else {
+                toggle.className = "fa-solid fa-moon";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
